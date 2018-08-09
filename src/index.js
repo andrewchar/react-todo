@@ -24,16 +24,8 @@ class App extends Component {
     }
 
     removeTodoItem(i) {
-        //when i remove these two lines, my filter items don't get filtered in the filteredItems var, no idea why..
-        //uncomment the next two lines and my items.slice works.. wut?
-        // const one = this.state.todoList;
-        // const two = one.splice(i, 1);
+        const filteredItems = this.state.todoList.filter((el, index) => index !== i);
 
-        const items = this.state.todoList;
-        const filteredItems = items.slice(0, i).concat(items.slice(i, items.length));
-        console.log(filteredItems);
-        
-        
         this.setState({
             todoList: [...filteredItems]
         })
