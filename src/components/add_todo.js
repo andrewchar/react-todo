@@ -12,11 +12,10 @@ class AddTodo extends Component {
     }
 
     updateTodoList(event) {
-        if (event.key === 'Enter') {            
+        if (event.key === 'Enter' && this.state.inputValue !== '') {            
             this.props.addTodoItem(this.state.inputValue);
             this.clearInputField();
         }
-        
     }
 
     clearInputField() {

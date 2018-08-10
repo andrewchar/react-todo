@@ -13,13 +13,24 @@ class App extends Component {
         super(props);
 
         this.state = {
-            todoList: ['eat', 'sleep', 'code', 'repeat']
+            todoList: [
+                {
+                    id: '13v57',
+                    task: 'dishes',
+                    done: false
+                },
+                {
+                    id: 'h7325',
+                    task: 'drive',
+                    done: false
+                }
+            ]
         }
     }
 
     addTodoItem(item) {
         this.setState({
-            todoList: [...this.state.todoList, item]
+            todoList: [...this.state.todoList].push({item})
         })
     }
 
@@ -34,6 +45,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                {/* <Title>Yet Another React Todo-App</Title> */}
                 <AddTodo 
                     addTodoItem={item => this.addTodoItem(item)}
                     todoList={this.props.todoList} />
