@@ -5,29 +5,59 @@ class AddTodo extends Component {
         super(props);
 
         this.state = {
-            inputValue: ''
+            inputValue: {
+                task: '',
+                id: '',
+                done: false
+            }
         };
 
-        this.updateTodoList = this.updateTodoList.bind(this);
+        this.createTodoItem = this.createTodoItem.bind(this);
     }
 
-    updateTodoList(event) {
-        if (event.key === 'Enter' && this.state.inputValue !== '') {            
-            this.props.addTodoItem(this.state.inputValue);
+    componentDidMount() {
+        this.createHashId();
+    }
+
+    createTodoItem(event) {
+        if (event.key === 'Enter') {
+            this.createHashId();            
+            this.addTodoItem();
             this.clearInputField();
         }
     }
 
+    addTodoItem() {
+        this.props.addTodoItem(this.state.inputValue);
+    }
+
+    createHashId() {        
+        const hash = Math.random().toString(36).replace('0.', '');
+        
+        this.setState(prevState => ({
+            inputValue: {
+                ...prevState.inputValue,
+                id: hash
+            }
+        }))
+    }
+
     clearInputField() {
-        this.setState({
-            inputValue: ''
-        })
+        this.setState(prevState => ({
+            inputValue: {
+                ...prevState.inputValue,
+                task: ""
+            }
+        }))
     }
 
     onInputChange(value) {
-        this.setState({
-            inputValue: value
-        })
+        this.setState(prevState => ({
+            inputValue: {
+                ...prevState.inputValue,
+                task: value
+            }
+        }))
     }
 
     render() {
@@ -35,8 +65,8 @@ class AddTodo extends Component {
             <div>
                 <input
                     onChange={event => this.onInputChange(event.target.value)}
-                    value={this.state.inputValue}
-                    onKeyPress={this.updateTodoList} />
+                    value={this.state.inputValue.task}
+                    onKeyPress={this.createTodoItem} />
             </div>
         );
     }

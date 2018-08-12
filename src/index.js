@@ -28,9 +28,9 @@ class App extends Component {
         }
     }
 
-    addTodoItem(item) {
+    addTodoItem(item) {        
         this.setState({
-            todoList: [...this.state.todoList].push({item})
+            todoList: this.state.todoList.concat(item)
         })
     }
 
@@ -45,7 +45,6 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                {/* <Title>Yet Another React Todo-App</Title> */}
                 <AddTodo 
                     addTodoItem={item => this.addTodoItem(item)}
                     todoList={this.props.todoList} />
