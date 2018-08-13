@@ -1,19 +1,36 @@
 import React from 'react';
-import RemoveTodoItem from './remove_todo';
+import styled from 'styled-components';
+
+import getElementID from './remove_todo';
+
+const Ul = styled.ul`
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+`
+const Li = styled.li`
+    padding: 15px 20px;
+    font-size: 2em;
+    background-color: #fff;
+    border-bottom: 1px solid #ededed;
+    cursor: pointer;
+    width: 100%;
+`
 
 const AddTodo = (props) => {
     const todoItems = props.todoList.map((obj) => {
         return (
-            <li key={obj.id}>
+            <Li key={obj.id} onClick={() => props.removeTodoItem(getElementID(obj.id))}>
                 {obj.task}
-            </li>
+            </Li>
         )
     });
 
     return (
-        <ul>
+        <Ul>
             {todoItems}
-        </ul>
+        </Ul>
     );
 };
 

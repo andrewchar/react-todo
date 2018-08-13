@@ -1,4 +1,21 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+const Input = styled.input`
+    font-size: 2em;
+    padding: 16px;
+    border: none;
+    box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+    width: 100%;
+
+    &::placeholder {
+        color: #DBDBDB;
+    }
+
+    &:focus {
+        outline: none;
+    }
+`
 
 class AddTodo extends Component {
     constructor(props) {
@@ -8,7 +25,6 @@ class AddTodo extends Component {
             inputValue: {
                 task: '',
                 id: '',
-                done: false
             }
         };
 
@@ -63,10 +79,11 @@ class AddTodo extends Component {
     render() {
         return (
             <div>
-                <input
+                <Input
                     onChange={event => this.onInputChange(event.target.value)}
                     value={this.state.inputValue.task}
-                    onKeyPress={this.createTodoItem} />
+                    onKeyPress={this.createTodoItem} 
+                    placeholder='Whatcha gatta do?'/>
             </div>
         );
     }
