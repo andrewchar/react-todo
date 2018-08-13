@@ -16,6 +16,7 @@ const Li = styled.li`
     border-bottom: 1px solid #ededed;
     cursor: pointer;
     width: 100%;
+    overflow-wrap: break-word;
 `
 
 const AddTodo = (props) => {
