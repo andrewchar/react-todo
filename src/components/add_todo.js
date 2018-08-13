@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const Input = styled.input`
+const StyledInput = styled.input`
     font-size: 2em;
     padding: 16px;
     border: none;
@@ -79,7 +79,7 @@ class AddTodo extends Component {
     render() {
         return (
             <div>
-                <Input
+                <StyledInput
                     onChange={event => this.onInputChange(event.target.value)}
                     value={this.state.inputValue.task}
                     onKeyPress={this.createTodoItem} 

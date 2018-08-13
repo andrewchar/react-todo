@@ -1,7 +1,3 @@
-    // import React from 'react';
+const getElementID = (id) => id
 
-    const getElementID = (id) => {
-        return id
-    }
-
-    export default getElementID;
+export default getElementID;

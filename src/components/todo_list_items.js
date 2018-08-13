@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 import getElementID from './remove_todo';
 
-const Ul = styled.ul`
+const StyledUl = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
     width: 100%;
 `
-const Li = styled.li`
+const StyledLi = styled.li`
     padding: 15px 20px;
     font-size: 2em;
     background-color: #fff;
@@ -22,17 +22,17 @@ const Li = styled.li`
 const AddTodo = (props) => {
     const todoItems = props.todoList.map((obj) => {
         return (
-            <Li key={obj.id} onClick={() => props.removeTodoItem(getElementID(obj.id))}>
+            <StyledLi key={obj.id} onClick={() => props.removeTodoItem(getElementID(obj.id))}>
                 {obj.task}
-            </Li>
+            </StyledLi>
         )
     });
 
-    return (
-        <Ul>
+    return props.todoList.length > 0 && (
+        <StyledUl>
             {todoItems}
-        </Ul>
-    );
+        </StyledUl>
+    )
 };
 
 export default AddTodo;
